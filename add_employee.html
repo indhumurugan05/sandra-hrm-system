@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add New Employee</h2>
+    <form action="../backend/insert_employee.php" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required>
+
+        <label for="department">Department:</label>
+        <input type="text" name="department" id="department" required>
+
+        <label for="designation">Designation:</label>
+        <input type="text" name="designation" id="designation" required>
+
+        <label for="join_date">Joining Date:</label>
+        <input type="date" name="join_date" id="join_date" required>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" required>
+            <option value="">--Select--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" rows="3" required></textarea>
+
+        <label>Salary:</label>
+<input type="number" name="salary" step="0.01" required>
+            <label for="work_location">Work Location:</label>
+            <select id="work_location" name="work_location" required>
+                <option value="">-- Select Work Location --</option>
+                <option value="Remote">Remote</option>
+                <option value="Office">Office</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+            </select>
+        <button type="submit">Add Employee</button>
+    </form>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get("success") === "1") {
+    alert("✅ Employee added successfully!");
+} else if (urlParams.get("error") === "1") {
+    alert("❌ Error: Email already exists!");
+}
+</script>
+
+</body>
+</html>
